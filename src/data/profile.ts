@@ -1149,11 +1149,22 @@ series = {FIRE '23}
     links: {
       proceedings: "https://dl.acm.org/doi/10.1145/3371158.3371205",
     },
-    bibtexText: `@inproceedings{prajapati2020swagrader,
-  title={SwaGrader: A Honest Effort Extracting, Modular Peer-Grading Tool},
-  author={Prajapati, Somu and Gupta, Ayushi and Nigam, Shubham Kumar and Nath, Swaprava},
-  booktitle={CoDS-COMAD},
-  year={2020}
+    bibtexText: `@inproceedings{10.1145/3371158.3371205,
+author = {Prajapati, Somu and Gupta, Ayushi and Nigam, Shubham Kumar and Nath, Swaprava},
+title = {SwaGrader: A Honest Effort Extracting, Modular Peer-Grading Tool},
+year = {2020},
+isbn = {9781450377386},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3371158.3371205},
+doi = {10.1145/3371158.3371205},
+abstract = {Massive open online courses pose a massive challenge for grading the answer scripts at a high accuracy. Peer grading is often viewed as a scalable solution to this challenge, which largely depends on the altruism of the peer graders. In this paper, we propose to demonstrate a tool designed for strategic peer-grading with the help of a structured and typical grading workflow. SwaGrader, a modular, secure and customizable (to any grading workflow) peer-grading tool enables the instructor to handle large courses (MOOCs and offline) with limited participation by teaching staff via a web-based application (extensible to any front-end framework based application) and a mechanism called TRUPEQA[1]. TRUPEQA (a) uses a constant number of instructor-graded answer-scripts to quantitatively measure the accuracies of the peer graders and corrects the scores accordingly, and (b) penalizes deliberate under-performing. We show that this mechanism is unique in its class to satisfy certain properties. Our human subject experiments show that TRUPEQA improves the grading quality over the mechanisms currently used in standard MOOCs. Our mechanism outperforms several standard peer grading techniques used in practice, even at times when the graders are non-manipulative.},
+booktitle = {Proceedings of the 7th ACM IKDD CoDS and 25th COMAD},
+pages = {312–316},
+numpages = {5},
+keywords = {Education, Mechanism design, Peer-grading, Tool development},
+location = {Hyderabad, India},
+series = {CoDS COMAD 2020}
 }`,
   },
 ];

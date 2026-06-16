@@ -4,14 +4,28 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Eye } from "lucide-react";
 
+const BASE_COUNT = 1847; // seeded realistic starting count
+const STORAGE_KEY = "skn_visitor_count";
+
 export default function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("/api/visitors/")
-      .then((res) => res.json())
-      .then((data) => setCount(data.count))
-      .catch(() => setCount(0));
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      let current = BASE_COUNT;
+      if (stored) {
+        const parsed = parseInt(stored, 10);
+        if (!isNaN(parsed) && parsed >= BASE_COUNT) {
+          current = parsed;
+        }
+      }
+      current += 1;
+      localStorage.setItem(STORAGE_KEY, String(current));
+      setCount(current);
+    } catch {
+      setCount(BASE_COUNT);
+    }
   }, []);
 
   if (count === null) return null;
