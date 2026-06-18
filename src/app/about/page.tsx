@@ -134,9 +134,6 @@ export default function AboutPage() {
                     {edu.institution} · {edu.location}
                   </p>
                   <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">{edu.period}</p>
-                  {edu.cgpa && (
-                    <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">CGPA: {edu.cgpa}</p>
-                  )}
                   {edu.thesis && (
                     <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">
                       <span className="font-medium">Thesis:</span> {edu.thesis}

@@ -228,7 +228,6 @@ export const education = [
     institution: "Indian Institute of Technology Kanpur",
     location: "Kanpur, Uttar Pradesh, India",
     period: "2017 – 2025",
-    cgpa: "7.00",
     thesis: "AI in Law: Comprehending the Indian Legal System using Artificial Intelligence",
     supervisor: "Prof. Arnab Bhattacharya",
   },
@@ -237,7 +236,6 @@ export const education = [
     institution: "Indian Institute of Engineering Science and Technology",
     location: "Howrah, West Bengal, India",
     period: "2015 – 2017",
-    cgpa: "78.72",
     thesis: "Solving the Heavy Hitters Problem for Streaming Data",
     supervisor: "Prof. Saptarshi Ghosh",
   },
@@ -246,7 +244,6 @@ export const education = [
     institution: "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
     location: "Bhopal, Madhya Pradesh, India",
     period: "2008 – 2012",
-    cgpa: "77.22",
   },
 ];
 
