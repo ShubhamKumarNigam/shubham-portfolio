@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { profile } from "@/data/profile";
 import SectionTitle from "@/components/SectionTitle";
 import ContactForm from "@/components/ContactForm";
-import { Mail, MapPin, ExternalLink } from "lucide-react";
+import { Mail, MapPin, ExternalLink, Globe } from "lucide-react";
 import { GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon } from "@/components/SocialIcons";
 
 export default function ContactPage() {
@@ -39,6 +39,7 @@ export default function ContactPage() {
               <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4">Social & Academic</h3>
               <div className="space-y-2">
                 {[
+                  { href: profile.socials.website, icon: Globe, label: "Google Sites", color: "hover:text-blue-600 dark:hover:text-blue-400" },
                   { href: profile.socials.googleScholar, icon: GoogleScholarIcon, label: "Google Scholar", color: "hover:text-emerald-600 dark:hover:text-emerald-400" },
                   { href: profile.socials.github, icon: GitHubIcon, label: "GitHub", color: "hover:text-slate-900 dark:hover:text-slate-100" },
                   { href: profile.socials.linkedin, icon: LinkedInIcon, label: "LinkedIn", color: "hover:text-blue-700 dark:hover:text-blue-400" },

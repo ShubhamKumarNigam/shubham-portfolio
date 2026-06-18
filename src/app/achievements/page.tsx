@@ -44,8 +44,19 @@ export default function AchievementsPage() {
                   <Icon size={22} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">{ach.title}</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">{ach.description}</p>
+                  {ach.link ? (
+                    <a
+                      href={ach.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-base font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                      {ach.title}
+                    </a>
+                  ) : (
+                    <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">{ach.title}</h3>
+                  )}
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 font-medium">{ach.description}</p>
                   {ach.date && (
                     <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">{ach.date}</p>
                   )}

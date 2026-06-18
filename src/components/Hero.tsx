@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { profile } from "@/data/profile";
-import { ArrowRight, Mail } from "lucide-react";
-import { GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon } from "@/components/SocialIcons";
+import { ArrowRight, Mail, Globe } from "lucide-react";
+import { GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon } from "@/components/SocialIcons";
 
 export default function Hero() {
   return (
@@ -68,6 +68,9 @@ export default function Hero() {
             </div>
 
             <div className="mt-8 flex items-center gap-4">
+              <a href={profile.socials.website} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="Google Sites">
+                <Globe size={22} />
+              </a>
               <a href={profile.socials.googleScholar} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" aria-label="Google Scholar">
                 <GoogleScholarIcon size={22} />
               </a>
@@ -79,6 +82,9 @@ export default function Hero() {
               </a>
               <a href={profile.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" aria-label="X / Twitter">
                 <XIcon size={22} />
+              </a>
+              <a href={profile.socials.huggingfaceOrg} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors" aria-label="HuggingFace">
+                <HuggingFaceIcon size={22} />
               </a>
             </div>
           </motion.div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { profile } from "@/data/profile";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Globe } from "lucide-react";
 import { GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon } from "@/components/SocialIcons";
 
 export default function Footer() {
@@ -34,6 +34,9 @@ export default function Footer() {
               Connect
             </h4>
             <div className="mt-3 flex gap-3">
+              <a href={profile.socials.website} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="Google Sites">
+                <Globe size={22} />
+              </a>
               <a href={profile.socials.googleScholar} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" aria-label="Google Scholar">
                 <GoogleScholarIcon size={22} />
               </a>

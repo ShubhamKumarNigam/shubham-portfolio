@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { profile, experiences, education } from "@/data/profile";
 import SectionTitle from "@/components/SectionTitle";
-import { MapPin, Mail, Calendar, GraduationCap, Briefcase } from "lucide-react";
+import { MapPin, Mail, Calendar, GraduationCap, Briefcase, ExternalLink } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -55,6 +55,17 @@ export default function AboutPage() {
                 <Calendar size={16} className="text-blue-500" />
                 Born 05 June 1991
               </div>
+              {profile.socials.website && (
+                <a
+                  href={profile.socials.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  <ExternalLink size={16} className="text-blue-500" />
+                  Google Sites Profile
+                </a>
+              )}
             </div>
           </motion.div>
 
@@ -97,7 +108,20 @@ export default function AboutPage() {
                     </span>
                   </div>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                    {exp.organization} · {exp.location}
+                    {exp.organizationUrl ? (
+                      <a
+                        href={exp.organizationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      >
+                        {exp.organization}
+                      </a>
+                    ) : (
+                      <span className="font-semibold text-slate-700 dark:text-slate-300">{exp.organization}</span>
+                    )}
+                    <span className="mx-1">·</span>
+                    {exp.location}
                   </p>
                   <ul className="mt-3 space-y-1">
                     {exp.description.map((d, j) => (
@@ -131,17 +155,42 @@ export default function AboutPage() {
                 <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5 shadow-sm">
                   <h4 className="text-base font-bold text-slate-900 dark:text-slate-100">{edu.degree}</h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                    {edu.institution} · {edu.location}
+                    {edu.institutionUrl ? (
+                      <a
+                        href={edu.institutionUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      >
+                        {edu.institution}
+                      </a>
+                    ) : (
+                      <span className="font-semibold text-slate-700 dark:text-slate-300">{edu.institution}</span>
+                    )}
+                    <span className="mx-1">·</span>
+                    {edu.location}
                   </p>
                   <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">{edu.period}</p>
                   {edu.thesis && (
                     <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">
-                      <span className="font-medium">Thesis:</span> {edu.thesis}
+                      <span className="font-semibold">Thesis:</span> {edu.thesis}
                     </p>
                   )}
                   {edu.supervisor && (
                     <p className="text-sm text-slate-600 dark:text-slate-400">
-                      <span className="font-medium">Supervisor:</span> {edu.supervisor}
+                      <span className="font-semibold">Supervisor:</span>{" "}
+                      {edu.supervisorUrl ? (
+                        <a
+                          href={edu.supervisorUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        >
+                          {edu.supervisor}
+                        </a>
+                      ) : (
+                        <span className="font-semibold text-slate-700 dark:text-slate-300">{edu.supervisor}</span>
+                      )}
                     </p>
                   )}
                 </div>

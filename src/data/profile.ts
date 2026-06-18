@@ -86,12 +86,14 @@ export interface Achievement {
   description: string;
   date?: string;
   type: string;
+  link?: string;
 }
 
 export interface Experience {
   id: string;
   role: string;
   organization: string;
+  organizationUrl?: string;
   location: string;
   startDate: string;
   endDate: string;
@@ -163,6 +165,7 @@ export const profile = {
     twitter: "https://x.com/sknigam05",
     openreview: "https://openreview.net/profile?id=~Shubham_Kumar_Nigam1",
     university: "https://www.birmingham.ac.uk/dubai",
+    website: "https://sites.google.com/view/shubhamkumarnigam/about-me",
   },
   cvUrl: "",
   photo: "/images/shubham-profile.jpg",
@@ -185,6 +188,7 @@ export const experiences: Experience[] = [
     id: "exp-2",
     role: "Senior Student Research Associate",
     organization: "BharatGen, IIT Kanpur",
+    organizationUrl: "https://bharatgen.com/",
     location: "Kanpur, India",
     startDate: "May 2025",
     endDate: "July 2025",
@@ -211,6 +215,7 @@ export const experiences: Experience[] = [
     id: "exp-4",
     role: "Project Assistant-1",
     organization: "Aeronautical Development Agency (ADA)",
+    organizationUrl: "https://www.ada.gov.in/",
     location: "Bangalore, India",
     startDate: "Sep 2017",
     endDate: "Dec 2017",
@@ -226,22 +231,28 @@ export const education = [
   {
     degree: "Ph.D. in Computer Science and Engineering",
     institution: "Indian Institute of Technology Kanpur",
+    institutionUrl: "https://www.iitk.ac.in/",
+    departmentUrl: "https://www.cse.iitk.ac.in/",
     location: "Kanpur, Uttar Pradesh, India",
     period: "2017 – 2025",
     thesis: "AI in Law: Comprehending the Indian Legal System using Artificial Intelligence",
     supervisor: "Prof. Arnab Bhattacharya",
+    supervisorUrl: "https://www.cse.iitk.ac.in/users/arnabb/",
   },
   {
     degree: "M.Tech. in Computer Science and Engineering",
     institution: "Indian Institute of Engineering Science and Technology",
+    institutionUrl: "https://www.iiests.ac.in/",
     location: "Howrah, West Bengal, India",
     period: "2015 – 2017",
     thesis: "Solving the Heavy Hitters Problem for Streaming Data",
     supervisor: "Prof. Saptarshi Ghosh",
+    supervisorUrl: "https://sites.google.com/site/saptarshighosh/",
   },
   {
     degree: "B.E. in Information Technology",
     institution: "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+    institutionUrl: "https://www.rgpv.ac.in/",
     location: "Bhopal, Madhya Pradesh, India",
     period: "2008 – 2012",
   },
@@ -1187,7 +1198,7 @@ export const projects: Project[] = [
     impact: "Advances indigenous AI capabilities for Indian languages and domains.",
     publications: [],
     links: {
-      website: "https://bharatgen.iitk.ac.in/projects",
+      website: "https://bharatgen.com/",
     },
     tags: ["Generative AI", "Multilingual AI", "India"],
   },
@@ -1713,6 +1724,7 @@ export const achievements: Achievement[] = [
     description: "Selected for the international research networking program funded by DAAD, Germany.",
     date: "2025",
     type: "Fellowship",
+    link: "https://www.daad.de/en/the-daad/postdocnet/fellows/fellows/#Nigam",
   },
   {
     id: "ach-2",
