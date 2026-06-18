@@ -248,7 +248,7 @@ export default function PublicationCard({ pub }: PublicationCardProps) {
                   {pub.abstract && (
                     <div>
                       <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wide">Abstract</p>
-                      <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{pub.abstract}</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap break-words">{pub.abstract}</p>
                     </div>
                   )}
                   <div>
