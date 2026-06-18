@@ -111,15 +111,15 @@ const linkLabels: Record<string, string> = {
 function HighlightedAuthors({ authors }: { authors: string }) {
   const parts = authors.split("Shubham Kumar Nigam");
   if (parts.length === 1) {
-    return <span className="text-xs text-slate-500 dark:text-slate-500">{authors}</span>;
+    return <span className="text-xs text-slate-500 dark:text-slate-500 break-words">{authors}</span>;
   }
   return (
-    <span className="text-xs text-slate-500 dark:text-slate-500">
+    <span className="text-xs text-slate-500 dark:text-slate-500 break-words">
       {parts.map((part, i) => (
-        <span key={i}>
+        <span key={i} className="break-words">
           {part}
           {i < parts.length - 1 && (
-            <span className="font-bold text-blue-600 dark:text-blue-400">Shubham Kumar Nigam</span>
+            <span className="font-bold text-blue-600 dark:text-blue-400 break-words">Shubham Kumar Nigam</span>
           )}
         </span>
       ))}
@@ -199,7 +199,7 @@ export default function PublicationCard({ pub }: PublicationCardProps) {
           <PosterGraphic type={pub.posterType as any} title={pub.title} className="w-full h-full rounded-none md:rounded-l-2xl md:rounded-tr-none" />
         </div>
 
-        <div className="flex-1 p-5">
+        <div className="flex-1 p-5 min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-900/20 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-400">
               {pub.year}
@@ -218,14 +218,14 @@ export default function PublicationCard({ pub }: PublicationCardProps) {
             </span>
           </div>
 
-          <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug mb-1 font-heading">
+          <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug mb-1 font-heading break-words">
             {pub.title}
           </h3>
-          <p className="mb-3 line-clamp-1">
+          <p className="mb-3 break-words">
             <HighlightedAuthors authors={pub.authors} />
           </p>
 
-          <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-2">{pub.summary}</p>
+          <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-2 break-words overflow-hidden">{pub.summary}</p>
 
           <div className="flex flex-wrap gap-1.5 mb-3">
             {pub.topic.map((t) => (
@@ -252,12 +252,12 @@ export default function PublicationCard({ pub }: PublicationCardProps) {
                     </div>
                   )}
                   <div>
-                    <p className="text-sm text-slate-700 dark:text-slate-300">
+                    <p className="text-sm text-slate-700 dark:text-slate-300 break-words">
                       <span className="font-semibold">Impact:</span> {pub.impact}
                     </p>
                   </div>
                   {pub.bibtexText && (
-                    <div className="relative mt-3">
+                    <div className="relative mt-3 min-w-0">
                       <div className="flex items-center justify-between mb-1">
                         <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wide">BibTeX</p>
                         <button
@@ -268,7 +268,7 @@ export default function PublicationCard({ pub }: PublicationCardProps) {
                           {copied ? "Copied" : "Copy BibTeX"}
                         </button>
                       </div>
-                      <pre className="text-xs bg-slate-50 dark:bg-slate-950 p-3 rounded-lg overflow-x-auto text-slate-700 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
+                      <pre className="text-xs bg-slate-50 dark:bg-slate-950 p-3 rounded-lg whitespace-pre-wrap break-words text-slate-700 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
                         {pub.bibtexText}
                       </pre>
                     </div>
