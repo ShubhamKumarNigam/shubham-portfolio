@@ -41,9 +41,9 @@ export default function ContactPage() {
                 {[
                   { href: profile.socials.website, icon: Globe, label: "Google Sites", color: "hover:text-blue-600 dark:hover:text-blue-400" },
                   { href: profile.socials.googleScholar, icon: GoogleScholarIcon, label: "Google Scholar", color: "hover:text-emerald-600 dark:hover:text-emerald-400" },
-                  { href: profile.socials.github, icon: GitHubIcon, label: "GitHub", color: "hover:text-slate-900 dark:hover:text-slate-100" },
+                  { href: profile.socials.github, icon: GitHubIcon, label: "GitHub", color: "hover:text-black dark:hover:text-white" },
                   { href: profile.socials.linkedin, icon: LinkedInIcon, label: "LinkedIn", color: "hover:text-blue-700 dark:hover:text-blue-400" },
-                  { href: profile.socials.twitter, icon: XIcon, label: "X / Twitter", color: "hover:text-slate-900 dark:hover:text-slate-100" },
+                  { href: profile.socials.twitter, icon: XIcon, label: "X / Twitter", color: "hover:text-black dark:hover:text-white" },
                   { href: profile.socials.huggingfaceOrg, icon: HuggingFaceIcon, label: "HuggingFace", color: "hover:text-yellow-600 dark:hover:text-yellow-400" },
                   { href: profile.socials.university, icon: ExternalLink, label: "University Profile", color: "hover:text-violet-600 dark:hover:text-violet-400" },
                 ].map((item) => (

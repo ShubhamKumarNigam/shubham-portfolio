@@ -15,7 +15,7 @@ module.exports = {
       colors: {
         navy: "#0f172a",
         royal: "#2563eb",
-        cyan: "#06b6d4",
+        brandCyan: "#06b6d4",
         gold: "#f59e0b",
         ivory: "#fffff0",
       },

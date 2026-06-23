@@ -25,7 +25,7 @@ export default function WorkingProjectCard({ project }: WorkingProjectCardProps)
       transition={{ duration: 0.5 }}
       className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm hover:shadow-lg transition-all"
     >
-      <div className="h-36 w-full">
+      <div className="h-28 w-full">
         <PosterGraphic type={project.posterType as any} title={project.title} className="w-full h-full rounded-none" />
       </div>
 

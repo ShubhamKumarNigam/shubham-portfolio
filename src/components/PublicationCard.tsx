@@ -12,6 +12,7 @@ import {
 
 interface PublicationCardProps {
   pub: Publication;
+  index?: number;
 }
 
 const linkConfig: Record<string, { icon: React.ElementType; color: string; darkColor: string; hover: string; darkHover: string }> = {
@@ -146,7 +147,7 @@ function getDisplayLinks(links: Publication["links"]) {
   return display;
 }
 
-export default function PublicationCard({ pub }: PublicationCardProps) {
+export default function PublicationCard({ pub, index }: PublicationCardProps) {
   const [expanded, setExpanded] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -191,6 +192,12 @@ export default function PublicationCard({ pub }: PublicationCardProps) {
       {pub.featured && (
         <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-900/30 px-2.5 py-1 text-xs font-medium text-amber-700 dark:text-amber-400">
           <Sparkles size={12} /> Featured
+        </div>
+      )}
+
+      {typeof index === "number" && (
+        <div className="absolute top-3 left-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white dark:bg-slate-800 border-2 border-blue-100 dark:border-blue-900/30 shadow-sm">
+          <span className="text-xs font-bold text-blue-600 dark:text-blue-400">{index}</span>
         </div>
       )}
 

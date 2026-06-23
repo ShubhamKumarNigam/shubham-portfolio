@@ -14,6 +14,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <motion.div
+      id={`project-${project.id}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -21,7 +22,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       whileHover={{ y: -4 }}
       className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm hover:shadow-lg transition-all"
     >
-      <div className="h-40 w-full">
+      <div className="h-28 w-full">
         <PosterGraphic type={project.posterType as any} title={project.name} className="w-full h-full rounded-none" />
       </div>
 

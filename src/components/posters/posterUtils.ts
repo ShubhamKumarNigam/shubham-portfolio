@@ -54,9 +54,3 @@ export function getPosterGradient(type: PosterType): string {
   };
   return map[type] || "poster-gradient-legal";
 }
-
-export function getPosterAcronym(title: string): string {
-  const words = title.split(/[:\s]+/).filter(w => w.length > 2);
-  const acronym = words.slice(0, 3).map(w => w[0].toUpperCase()).join("");
-  return acronym || "AI";
-}

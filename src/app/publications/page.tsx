@@ -152,8 +152,8 @@ export default function PublicationsPage() {
         </motion.div>
 
         <div className="space-y-6">
-          {filtered.map((pub) => (
-            <PublicationCard key={pub.id} pub={pub} />
+          {filtered.map((pub, index) => (
+            <PublicationCard key={pub.id} pub={pub} index={index + 1} />
           ))}
           {filtered.length === 0 && (
             <div className="text-center py-16 text-slate-500 dark:text-slate-500">

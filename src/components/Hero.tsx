@@ -74,13 +74,13 @@ export default function Hero() {
               <a href={profile.socials.googleScholar} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" aria-label="Google Scholar">
                 <GoogleScholarIcon size={22} />
               </a>
-              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" aria-label="GitHub">
+              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-black dark:hover:text-white transition-colors" aria-label="GitHub">
                 <GitHubIcon size={22} />
               </a>
               <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-700 dark:hover:text-blue-400 transition-colors" aria-label="LinkedIn">
                 <LinkedInIcon size={22} />
               </a>
-              <a href={profile.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" aria-label="X / Twitter">
+              <a href={profile.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-black dark:hover:text-white transition-colors" aria-label="X / Twitter">
                 <XIcon size={22} />
               </a>
               <a href={profile.socials.huggingfaceOrg} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors" aria-label="HuggingFace">

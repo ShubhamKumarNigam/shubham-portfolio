@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { profile, experiences, education } from "@/data/profile";
 import SectionTitle from "@/components/SectionTitle";
-import { MapPin, Mail, Calendar, GraduationCap, Briefcase, ExternalLink } from "lucide-react";
+import { MapPin, Mail, GraduationCap, Briefcase, ExternalLink } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -51,10 +51,6 @@ export default function AboutPage() {
                 <Mail size={16} className="text-blue-500" />
                 {profile.email}
               </div>
-              <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
-                <Calendar size={16} className="text-blue-500" />
-                Born 05 June 1991
-              </div>
               {profile.socials.website && (
                 <a
                   href={profile.socials.website}
@@ -74,13 +70,83 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-6"
           >
-            {profile.bio.map((paragraph, i) => (
-              <p key={i} className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
+            <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              <strong className="text-slate-900 dark:text-slate-100">Dr. Shubham Kumar Nigam</strong> is a{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Research Fellow</strong> at the School of Computer Science,{" "}
+              <a
+                href="https://www.birmingham.ac.uk/dubai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-colors"
+              >
+                University of Birmingham Dubai
+              </a>
+              , where he leads research on the{" "}
+              <a
+                href="/projects/#project-proj-1"
+                className="font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-colors"
+              >
+                KAMAL Health Project
+              </a>
+              —developing interpretable and responsible AI systems for healthcare decision support and patient-centric care across Arabic and English languages.
+            </p>
+            <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              He completed his <strong className="text-slate-900 dark:text-slate-100">Ph.D. in Computer Science and Engineering</strong> from{" "}
+              <a
+                href="https://www.iitk.ac.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-colors"
+              >
+                IIT Kanpur
+              </a>{" "}
+              under the supervision of{" "}
+              <a
+                href="https://www.cse.iitk.ac.in/users/arnabb/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-colors"
+              >
+                Prof. Arnab Bhattacharya
+              </a>
+              . His doctoral research,{" "}
+              <strong className="text-slate-900 dark:text-slate-100 italic">
+                &ldquo;AI in Law: Comprehending the Indian Legal System using Artificial Intelligence,&rdquo;
+              </strong>{" "}
+              introduced several large-scale datasets, domain-specific models, and benchmark frameworks that are now widely used in Legal NLP.
+            </p>
+            <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              His research spans <strong className="text-slate-900 dark:text-slate-100">Core AI/ML</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">AI Memory Management</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Distributed Training</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Test-Time Training</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Efficient LLM Systems</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">LLM Reasoning and Agents</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Evaluation and Benchmarking</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Legal AI</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Explainable AI</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Natural Language Processing</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">AI for Healthcare</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Multilingual AI</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Legal Information Retrieval</strong>, and{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Responsible AI</strong>. He has published extensively in top-tier venues including{" "}
+              <strong className="text-slate-900 dark:text-slate-100">ACL</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">NAACL</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">EMNLP</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">COLING</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">AACL-IJCNLP</strong>, and{" "}
+              <strong className="text-slate-900 dark:text-slate-100">ICAIL</strong>.
+            </p>
+            <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              He is a <strong className="text-slate-900 dark:text-slate-100">DAAD Postdoc-NeT-AI Fellow</strong> and has received notable recognitions including a{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Best Paper Award at the Bridge between AI and Law at AAAI 2026</strong>, an{" "}
+              <strong className="text-slate-900 dark:text-slate-100">MSCA Postdoctoral Fellowship Proposal with 92%+ evaluation score</strong>, and{" "}
+              <strong className="text-slate-900 dark:text-slate-100">AI World notable paper recognition</strong>. He actively serves as a reviewer for{" "}
+              <strong className="text-slate-900 dark:text-slate-100">ARR</strong>,{" "}
+              <strong className="text-slate-900 dark:text-slate-100">Artificial Intelligence and Law Journal</strong>, and as a program committee member for multiple symposiums and shared tasks.
+            </p>
           </motion.div>
         </div>
 
@@ -113,12 +179,12 @@ export default function AboutPage() {
                         href={exp.organizationUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        className="font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-colors"
                       >
                         {exp.organization}
                       </a>
                     ) : (
-                      <span className="font-semibold text-slate-700 dark:text-slate-300">{exp.organization}</span>
+                      <span className="font-bold text-slate-700 dark:text-slate-300">{exp.organization}</span>
                     )}
                     <span className="mx-1">·</span>
                     {exp.location}
@@ -160,12 +226,12 @@ export default function AboutPage() {
                         href={edu.institutionUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        className="font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-colors"
                       >
                         {edu.institution}
                       </a>
                     ) : (
-                      <span className="font-semibold text-slate-700 dark:text-slate-300">{edu.institution}</span>
+                      <span className="font-bold text-slate-700 dark:text-slate-300">{edu.institution}</span>
                     )}
                     <span className="mx-1">·</span>
                     {edu.location}
@@ -173,23 +239,24 @@ export default function AboutPage() {
                   <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">{edu.period}</p>
                   {edu.thesis && (
                     <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">
-                      <span className="font-semibold">Thesis:</span> {edu.thesis}
+                      <span className="font-bold">Thesis:</span>{" "}
+                      <strong className="text-slate-900 dark:text-slate-100 italic">{edu.thesis}</strong>
                     </p>
                   )}
                   {edu.supervisor && (
                     <p className="text-sm text-slate-600 dark:text-slate-400">
-                      <span className="font-semibold">Supervisor:</span>{" "}
+                      <span className="font-bold">Supervisor:</span>{" "}
                       {edu.supervisorUrl ? (
                         <a
                           href={edu.supervisorUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                          className="font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-colors"
                         >
                           {edu.supervisor}
                         </a>
                       ) : (
-                        <span className="font-semibold text-slate-700 dark:text-slate-300">{edu.supervisor}</span>
+                        <span className="font-bold text-slate-700 dark:text-slate-300">{edu.supervisor}</span>
                       )}
                     </p>
                   )}
