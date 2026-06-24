@@ -3,7 +3,10 @@
 import Link from "next/link";
 import { profile } from "@/data/profile";
 import { ExternalLink, Globe } from "lucide-react";
-import { GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon } from "@/components/SocialIcons";
+import {
+  GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon,
+  DBLPIcon, ORCIDIcon, SemanticScholarIcon, ACLAnthologyIcon, ScopusIcon, ResearchGateIcon,
+} from "@/components/SocialIcons";
 import { BrandMark } from "@/components/BrandMark";
 
 export default function Footer() {
@@ -32,28 +35,33 @@ export default function Footer() {
             <h4 className="text-xs font-semibold text-ink dark:text-ink-dark uppercase tracking-wider">
               Connect
             </h4>
-            <div className="mt-3 flex gap-3">
-              <a href={profile.socials.website} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="Google Sites">
-                <Globe size={22} />
-              </a>
-              <a href={profile.socials.googleScholar} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="Google Scholar">
-                <GoogleScholarIcon size={22} />
-              </a>
-              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="GitHub">
-                <GitHubIcon size={22} />
-              </a>
-              <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="LinkedIn">
-                <LinkedInIcon size={22} />
-              </a>
-              <a href={profile.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="X / Twitter">
-                <XIcon size={22} />
-              </a>
-              <a href={profile.socials.huggingfaceOrg} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="HuggingFace">
-                <HuggingFaceIcon size={22} />
-              </a>
-              <a href={profile.socials.university} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="University">
-                <ExternalLink size={22} />
-              </a>
+            <div className="mt-3 flex flex-wrap gap-3">
+              {[
+                { href: profile.socials.website, icon: Globe, label: "Google Sites" },
+                { href: profile.socials.googleScholar, icon: GoogleScholarIcon, label: "Google Scholar" },
+                { href: profile.socials.dblp, icon: DBLPIcon, label: "DBLP" },
+                { href: profile.socials.orcid, icon: ORCIDIcon, label: "ORCID" },
+                { href: profile.socials.semanticScholar, icon: SemanticScholarIcon, label: "Semantic Scholar" },
+                { href: profile.socials.aclAnthology, icon: ACLAnthologyIcon, label: "ACL Anthology" },
+                { href: profile.socials.scopus, icon: ScopusIcon, label: "Scopus" },
+                { href: profile.socials.researchGate, icon: ResearchGateIcon, label: "ResearchGate" },
+                { href: profile.socials.github, icon: GitHubIcon, label: "GitHub" },
+                { href: profile.socials.linkedin, icon: LinkedInIcon, label: "LinkedIn" },
+                { href: profile.socials.twitter, icon: XIcon, label: "X / Twitter" },
+                { href: profile.socials.huggingfaceOrg, icon: HuggingFaceIcon, label: "HuggingFace" },
+                { href: profile.socials.university, icon: ExternalLink, label: "University" },
+              ].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded"
+                  aria-label={item.label}
+                >
+                  <item.icon size={20} />
+                </a>
+              ))}
             </div>
             <p className="mt-3 text-sm text-ink2 dark:text-ink2-dark">
               {profile.email}

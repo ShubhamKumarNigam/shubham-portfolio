@@ -5,7 +5,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { profile, publications, datasetsModels, talks, achievements, projects } from "@/data/profile";
 import { ArrowRight, Globe } from "lucide-react";
-import { GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon } from "@/components/SocialIcons";
+import {
+  GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon,
+  DBLPIcon, ORCIDIcon, SemanticScholarIcon, ACLAnthologyIcon, ScopusIcon, ResearchGateIcon,
+} from "@/components/SocialIcons";
 
 export default function Hero() {
   const stats = [
@@ -66,25 +69,32 @@ export default function Hero() {
               </Link>
             </div>
 
-            <div className="mt-8 flex items-center gap-4">
-              <a href={profile.socials.website} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="Google Sites">
-                <Globe size={22} />
-              </a>
-              <a href={profile.socials.googleScholar} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="Google Scholar">
-                <GoogleScholarIcon size={22} />
-              </a>
-              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="GitHub">
-                <GitHubIcon size={22} />
-              </a>
-              <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="LinkedIn">
-                <LinkedInIcon size={22} />
-              </a>
-              <a href={profile.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="X / Twitter">
-                <XIcon size={22} />
-              </a>
-              <a href={profile.socials.huggingfaceOrg} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="HuggingFace">
-                <HuggingFaceIcon size={22} />
-              </a>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              {[
+                { href: profile.socials.website, icon: Globe, label: "Google Sites" },
+                { href: profile.socials.googleScholar, icon: GoogleScholarIcon, label: "Google Scholar" },
+                { href: profile.socials.dblp, icon: DBLPIcon, label: "DBLP" },
+                { href: profile.socials.orcid, icon: ORCIDIcon, label: "ORCID" },
+                { href: profile.socials.semanticScholar, icon: SemanticScholarIcon, label: "Semantic Scholar" },
+                { href: profile.socials.aclAnthology, icon: ACLAnthologyIcon, label: "ACL Anthology" },
+                { href: profile.socials.scopus, icon: ScopusIcon, label: "Scopus" },
+                { href: profile.socials.researchGate, icon: ResearchGateIcon, label: "ResearchGate" },
+                { href: profile.socials.github, icon: GitHubIcon, label: "GitHub" },
+                { href: profile.socials.linkedin, icon: LinkedInIcon, label: "LinkedIn" },
+                { href: profile.socials.twitter, icon: XIcon, label: "X / Twitter" },
+                { href: profile.socials.huggingfaceOrg, icon: HuggingFaceIcon, label: "HuggingFace" },
+              ].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded"
+                  aria-label={item.label}
+                >
+                  <item.icon size={20} />
+                </a>
+              ))}
             </div>
           </motion.div>
 

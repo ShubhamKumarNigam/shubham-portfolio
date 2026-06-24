@@ -5,7 +5,10 @@ import { profile } from "@/data/profile";
 import SectionTitle from "@/components/SectionTitle";
 import ContactForm from "@/components/ContactForm";
 import { Mail, MapPin, ExternalLink, Globe } from "lucide-react";
-import { GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon } from "@/components/SocialIcons";
+import {
+  GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon,
+  DBLPIcon, ORCIDIcon, SemanticScholarIcon, ACLAnthologyIcon, ScopusIcon, ResearchGateIcon,
+} from "@/components/SocialIcons";
 
 export default function ContactPage() {
   return (
@@ -41,6 +44,12 @@ export default function ContactPage() {
                 {[
                   { href: profile.socials.website, icon: Globe, label: "Google Sites" },
                   { href: profile.socials.googleScholar, icon: GoogleScholarIcon, label: "Google Scholar" },
+                  { href: profile.socials.dblp, icon: DBLPIcon, label: "DBLP" },
+                  { href: profile.socials.orcid, icon: ORCIDIcon, label: "ORCID" },
+                  { href: profile.socials.semanticScholar, icon: SemanticScholarIcon, label: "Semantic Scholar" },
+                  { href: profile.socials.aclAnthology, icon: ACLAnthologyIcon, label: "ACL Anthology" },
+                  { href: profile.socials.scopus, icon: ScopusIcon, label: "Scopus" },
+                  { href: profile.socials.researchGate, icon: ResearchGateIcon, label: "ResearchGate" },
                   { href: profile.socials.github, icon: GitHubIcon, label: "GitHub" },
                   { href: profile.socials.linkedin, icon: LinkedInIcon, label: "LinkedIn" },
                   { href: profile.socials.twitter, icon: XIcon, label: "X / Twitter" },
