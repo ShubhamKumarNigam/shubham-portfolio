@@ -13,14 +13,6 @@ const typeIcons: Record<string, React.ElementType> = {
   Service: Users,
 };
 
-const typeColors: Record<string, string> = {
-  Fellowship: "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400",
-  Award: "bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400",
-  Recognition: "bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-400",
-  "Travel Grant": "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400",
-  Service: "bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-400",
-};
-
 export default function AchievementsPage() {
   return (
     <div className="pt-24 pb-20">
@@ -33,32 +25,31 @@ export default function AchievementsPage() {
             return (
               <motion.div
                 key={ach.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                whileHover={{ y: -4 }}
-                className="flex items-start gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-lg transition-all"
+                className="flex items-start gap-4 rounded-lg border border-hairline dark:border-hairline-dark bg-surface dark:bg-surface-dark p-6 shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className={`shrink-0 inline-flex h-12 w-12 items-center justify-center rounded-xl ${typeColors[ach.type]}`}>
+                <div className="shrink-0 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-accent-tint border border-accent-tintbd text-accent dark:text-accent-link">
                   <Icon size={22} />
                 </div>
-                <div>
+                <div className="min-w-0">
                   {ach.link ? (
                     <a
                       href={ach.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-base font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      className="text-base font-semibold text-ink dark:text-ink-dark hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded"
                     >
                       {ach.title}
                     </a>
                   ) : (
-                    <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">{ach.title}</h3>
+                    <h3 className="text-base font-semibold text-ink dark:text-ink-dark">{ach.title}</h3>
                   )}
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 font-medium">{ach.description}</p>
+                  <p className="text-sm text-ink2 dark:text-ink2-dark mt-1">{ach.description}</p>
                   {ach.date && (
-                    <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">{ach.date}</p>
+                    <p className="text-xs font-mono text-muted mt-2">{ach.date}</p>
                   )}
                 </div>
               </motion.div>

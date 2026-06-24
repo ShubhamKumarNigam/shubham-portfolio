@@ -67,9 +67,11 @@ export default function AppointmentForm() {
     }
   };
 
+  const inputClass = "w-full rounded-md border border-hairline dark:border-hairline-dark bg-paper dark:bg-paper-dark px-4 py-2.5 text-sm text-ink dark:text-ink-dark focus:outline-none focus:ring-2 focus:ring-accent";
+
   return (
     <motion.form
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       onSubmit={handleSubmit}
@@ -79,30 +81,30 @@ export default function AppointmentForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Full Name *</label>
-          <input required name="name" value={form.name} onChange={handleChange} className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label className="block text-sm font-medium text-ink2 dark:text-ink2-dark mb-1">Full Name *</label>
+          <input required name="name" value={form.name} onChange={handleChange} className={inputClass} />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email Address *</label>
-          <input required type="email" name="email" value={form.email} onChange={handleChange} className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Institution / Organization</label>
-          <input name="institution" value={form.institution} onChange={handleChange} className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Country</label>
-          <input name="country" value={form.country} onChange={handleChange} className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label className="block text-sm font-medium text-ink2 dark:text-ink2-dark mb-1">Email Address *</label>
+          <input required type="email" name="email" value={form.email} onChange={handleChange} className={inputClass} />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Purpose of Meeting *</label>
-          <select required name="purpose" value={form.purpose} onChange={handleChange} className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label className="block text-sm font-medium text-ink2 dark:text-ink2-dark mb-1">Institution / Organization</label>
+          <input name="institution" value={form.institution} onChange={handleChange} className={inputClass} />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-ink2 dark:text-ink2-dark mb-1">Country</label>
+          <input name="country" value={form.country} onChange={handleChange} className={inputClass} />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-ink2 dark:text-ink2-dark mb-1">Purpose of Meeting *</label>
+          <select required name="purpose" value={form.purpose} onChange={handleChange} className={inputClass}>
             <option value="">Select purpose</option>
             <option value="Research Collaboration">Research Collaboration</option>
             <option value="PhD Guidance">PhD Guidance</option>
@@ -115,8 +117,8 @@ export default function AppointmentForm() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Preferred Meeting Mode</label>
-          <select name="mode" value={form.mode} onChange={handleChange} className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label className="block text-sm font-medium text-ink2 dark:text-ink2-dark mb-1">Preferred Meeting Mode</label>
+          <select name="mode" value={form.mode} onChange={handleChange} className={inputClass}>
             <option value="">Select mode</option>
             <option value="Online">Online</option>
             <option value="In-person">In-person</option>
@@ -126,23 +128,23 @@ export default function AppointmentForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Preferred Date</label>
-          <input type="date" name="date" value={form.date} onChange={handleChange} className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label className="block text-sm font-medium text-ink2 dark:text-ink2-dark mb-1">Preferred Date</label>
+          <input type="date" name="date" value={form.date} onChange={handleChange} className={inputClass} />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Preferred Time</label>
-          <input type="time" name="time" value={form.time} onChange={handleChange} className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label className="block text-sm font-medium text-ink2 dark:text-ink2-dark mb-1">Preferred Time</label>
+          <input type="time" name="time" value={form.time} onChange={handleChange} className={inputClass} />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Message / Agenda</label>
-        <textarea name="message" value={form.message} onChange={handleChange} rows={4} className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <label className="block text-sm font-medium text-ink2 dark:text-ink2-dark mb-1">Message / Agenda</label>
+        <textarea name="message" value={form.message} onChange={handleChange} rows={4} className={inputClass} />
       </div>
 
       <div className="flex items-start gap-2">
-        <input type="checkbox" name="consent" checked={form.consent} onChange={handleChange} className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" />
-        <label className="text-sm text-slate-600 dark:text-slate-400">
+        <input type="checkbox" name="consent" checked={form.consent} onChange={handleChange} className="mt-1 h-4 w-4 rounded border-hairline dark:border-hairline-dark text-accent focus:ring-accent bg-paper dark:bg-paper-dark" />
+        <label className="text-sm text-ink2 dark:text-ink2-dark">
           I consent to having my information stored and used to respond to my inquiry. *
         </label>
       </div>
@@ -150,18 +152,18 @@ export default function AppointmentForm() {
       <button
         type="submit"
         disabled={loading || !form.consent}
-        className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
       >
         {loading ? "Sending..." : <><Send size={16} /> Request Meeting</>}
       </button>
 
       {status === "success" && (
-        <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-sm">
+        <div className="flex items-center gap-2 text-ok text-sm">
           <CheckCircle size={16} /> Message sent successfully!
         </div>
       )}
       {status === "error" && (
-        <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400 text-sm">
+        <div className="flex items-center gap-2 text-signal text-sm">
           <AlertCircle size={16} /> Something went wrong. Please try again.
         </div>
       )}

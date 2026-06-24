@@ -34,11 +34,11 @@ export default function VisitorCounter() {
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="inline-flex items-center gap-2 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm text-slate-700 dark:text-slate-300 shadow-sm"
+      className="inline-flex items-center gap-2 rounded-full bg-surface dark:bg-surface-dark backdrop-blur-sm border border-hairline dark:border-hairline-dark px-4 py-2 text-sm text-ink2 dark:text-ink2-dark shadow-sm"
     >
-      <Eye size={16} className="text-blue-500" />
-      <span className="font-medium">{count.toLocaleString()}</span>
-      <span className="text-slate-500 dark:text-slate-400">visitors</span>
+      <Eye size={16} className="text-accent dark:text-accent-link" />
+      <span className="font-medium text-ink dark:text-ink-dark">{count.toLocaleString()}</span>
+      <span className="text-muted">visitors</span>
     </motion.div>
   );
 }

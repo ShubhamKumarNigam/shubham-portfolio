@@ -12,17 +12,7 @@ const typeIcons: Record<string, React.ElementType> = {
   Benchmark: BarChart3,
 };
 
-const typeColors: Record<string, string> = {
-  Dataset: "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400",
-  Model: "bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-400",
-  Tool: "bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400",
-  Benchmark: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400",
-};
-
-const domainColors: Record<string, string> = {
-  "Legal AI": "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300",
-  "Healthcare AI": "bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-400",
-};
+const chipBase = "inline-flex items-center gap-1 rounded-md bg-paper dark:bg-paper-dark border border-hairline dark:border-hairline-dark px-2 py-0.5 text-xs font-medium";
 
 export default function DatasetsModelsPage() {
   return (
@@ -38,44 +28,43 @@ export default function DatasetsModelsPage() {
             return (
               <motion.div
                 key={dm.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                whileHover={{ y: -4 }}
-                className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-lg transition-all"
+                className="rounded-lg border border-hairline dark:border-hairline-dark bg-surface dark:bg-surface-dark p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${typeColors[dm.type]}`}>
+                  <div className={`${chipBase} text-ink2 dark:text-ink2-dark`}>
                     <Icon size={14} /> {dm.type}
                   </div>
-                  <span className={`text-xs px-2 py-0.5 rounded-full ${domainColors[dm.domain]}`}>
+                  <span className={`${chipBase} text-muted`}>
                     {dm.domain}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">{dm.name}</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">{dm.description}</p>
+                <h3 className="font-heading text-lg text-ink dark:text-ink-dark mb-2">{dm.name}</h3>
+                <p className="text-sm text-ink2 dark:text-ink2-dark mb-4 leading-relaxed">{dm.description}</p>
 
                 {hasLinks && (
                   <div className="flex flex-wrap gap-2">
                     {dm.links.github && (
-                      <a href={dm.links.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-lg bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                      <a href={dm.links.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-md bg-paper dark:bg-paper-dark border border-hairline dark:border-hairline-dark px-3 py-1.5 text-xs font-medium text-ink2 dark:text-ink2-dark hover:bg-accent-tint hover:border-accent-tintbd hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
                         <Code2 size={12} /> GitHub
                       </a>
                     )}
                     {dm.links.hfDataset && (
-                      <a href={dm.links.hfDataset} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-lg bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                      <a href={dm.links.hfDataset} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-md bg-paper dark:bg-paper-dark border border-hairline dark:border-hairline-dark px-3 py-1.5 text-xs font-medium text-ink2 dark:text-ink2-dark hover:bg-accent-tint hover:border-accent-tintbd hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
                         <Database size={12} /> Dataset
                       </a>
                     )}
                     {dm.links.hfModel && (
-                      <a href={dm.links.hfModel} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-lg bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                      <a href={dm.links.hfModel} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-md bg-paper dark:bg-paper-dark border border-hairline dark:border-hairline-dark px-3 py-1.5 text-xs font-medium text-ink2 dark:text-ink2-dark hover:bg-accent-tint hover:border-accent-tintbd hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
                         <Cpu size={12} /> Model
                       </a>
                     )}
                     {dm.links.arxiv && (
-                      <a href={dm.links.arxiv} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-lg bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                      <a href={dm.links.arxiv} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-md bg-paper dark:bg-paper-dark border border-hairline dark:border-hairline-dark px-3 py-1.5 text-xs font-medium text-ink2 dark:text-ink2-dark hover:bg-accent-tint hover:border-accent-tintbd hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
                         <ExternalLink size={12} /> arXiv
                       </a>
                     )}

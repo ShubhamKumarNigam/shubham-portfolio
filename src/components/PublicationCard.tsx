@@ -3,11 +3,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Publication } from "@/data/profile";
-import PosterGraphic from "./posters/PosterGraphic";
 import {
   BookOpen, FileText, Code2, Database, Cpu, Landmark,
-  Copy, Check, ChevronDown, ChevronUp, Sparkles, Presentation,
-  Image as ImageIcon, Globe, LayoutTemplate, ListChecks
+  Copy, Check, ChevronDown, ChevronUp, Sparkles,
+  LayoutTemplate, ListChecks
 } from "lucide-react";
 
 interface PublicationCardProps {
@@ -15,112 +14,30 @@ interface PublicationCardProps {
   index?: number;
 }
 
-const linkConfig: Record<string, { icon: React.ElementType; color: string; darkColor: string; hover: string; darkHover: string }> = {
-  proceedings: {
-    icon: BookOpen,
-    color: "bg-emerald-50 text-emerald-700 border-emerald-200",
-    darkColor: "dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800",
-    hover: "hover:bg-emerald-100 hover:text-emerald-800",
-    darkHover: "dark:hover:bg-emerald-900/30 dark:hover:text-emerald-300",
-  },
-  anthology: {
-    icon: Globe,
-    color: "bg-sky-50 text-sky-700 border-sky-200",
-    darkColor: "dark:bg-sky-900/20 dark:text-sky-400 dark:border-sky-800",
-    hover: "hover:bg-sky-100 hover:text-sky-800",
-    darkHover: "dark:hover:bg-sky-900/30 dark:hover:text-sky-300",
-  },
-  arxiv: {
-    icon: FileText,
-    color: "bg-red-50 text-red-700 border-red-200",
-    darkColor: "dark:bg-red-900/20 dark:text-red-400 dark:border-red-800",
-    hover: "hover:bg-red-100 hover:text-red-800",
-    darkHover: "dark:hover:bg-red-900/30 dark:hover:text-red-300",
-  },
-  github: {
-    icon: Code2,
-    color: "bg-slate-100 text-slate-700 border-slate-300",
-    darkColor: "dark:bg-slate-800 dark:text-slate-300 dark:border-slate-600",
-    hover: "hover:bg-slate-200 hover:text-slate-800",
-    darkHover: "dark:hover:bg-slate-700 dark:hover:text-slate-200",
-  },
-  hfDataset: {
-    icon: Database,
-    color: "bg-yellow-50 text-yellow-700 border-yellow-200",
-    darkColor: "dark:bg-yellow-900/20 dark:text-yellow-400 dark:border-yellow-800",
-    hover: "hover:bg-yellow-100 hover:text-yellow-800",
-    darkHover: "dark:hover:bg-yellow-900/30 dark:hover:text-yellow-300",
-  },
-  hfModel: {
-    icon: Cpu,
-    color: "bg-orange-50 text-orange-700 border-orange-200",
-    darkColor: "dark:bg-orange-900/20 dark:text-orange-400 dark:border-orange-800",
-    hover: "hover:bg-orange-100 hover:text-orange-800",
-    darkHover: "dark:hover:bg-orange-900/30 dark:hover:text-orange-300",
-  },
-  hfResults: {
-    icon: ListChecks,
-    color: "bg-amber-50 text-amber-700 border-amber-200",
-    darkColor: "dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800",
-    hover: "hover:bg-amber-100 hover:text-amber-800",
-    darkHover: "dark:hover:bg-amber-900/30 dark:hover:text-amber-300",
-  },
-  conference: {
-    icon: Landmark,
-    color: "bg-indigo-50 text-indigo-700 border-indigo-200",
-    darkColor: "dark:bg-indigo-900/20 dark:text-indigo-400 dark:border-indigo-800",
-    hover: "hover:bg-indigo-100 hover:text-indigo-800",
-    darkHover: "dark:hover:bg-indigo-900/30 dark:hover:text-indigo-300",
-  },
-  project: {
-    icon: LayoutTemplate,
-    color: "bg-violet-50 text-violet-700 border-violet-200",
-    darkColor: "dark:bg-violet-900/20 dark:text-violet-400 dark:border-violet-800",
-    hover: "hover:bg-violet-100 hover:text-violet-800",
-    darkHover: "dark:hover:bg-violet-900/30 dark:hover:text-violet-300",
-  },
-  slides: {
-    icon: Presentation,
-    color: "bg-cyan-50 text-cyan-700 border-cyan-200",
-    darkColor: "dark:bg-cyan-900/20 dark:text-cyan-400 dark:border-cyan-800",
-    hover: "hover:bg-cyan-100 hover:text-cyan-800",
-    darkHover: "dark:hover:bg-cyan-900/30 dark:hover:text-cyan-300",
-  },
-  poster: {
-    icon: ImageIcon,
-    color: "bg-pink-50 text-pink-700 border-pink-200",
-    darkColor: "dark:bg-pink-900/20 dark:text-pink-400 dark:border-pink-800",
-    hover: "hover:bg-pink-100 hover:text-pink-800",
-    darkHover: "dark:hover:bg-pink-900/30 dark:hover:text-pink-300",
-  },
-};
-
-const linkLabels: Record<string, string> = {
-  proceedings: "Proceedings",
-  anthology: "ACL Anthology",
-  arxiv: "arXiv",
-  github: "GitHub",
-  hfResults: "HF Results",
-  hfDataset: "HuggingFace Datasets",
-  hfModel: "HuggingFace Models",
-  conference: "Conference",
-  project: "Project Page",
-  slides: "Slides",
-  poster: "Poster",
+const linkConfig: Record<string, { icon: React.ElementType; label: string; short: string }> = {
+  proceedings: { icon: BookOpen, label: "Proceedings", short: "Proc" },
+  anthology: { icon: BookOpen, label: "ACL Anthology", short: "ACL" },
+  arxiv: { icon: FileText, label: "arXiv", short: "arXiv" },
+  github: { icon: Code2, label: "GitHub", short: "GH" },
+  hfResults: { icon: ListChecks, label: "HF Results", short: "HF" },
+  hfDataset: { icon: Database, label: "HuggingFace Datasets", short: "HF" },
+  hfModel: { icon: Cpu, label: "HuggingFace Models", short: "HF" },
+  conference: { icon: Landmark, label: "Conference", short: "Conf" },
+  project: { icon: LayoutTemplate, label: "Project Page", short: "Proj" },
 };
 
 function HighlightedAuthors({ authors }: { authors: string }) {
   const parts = authors.split("Shubham Kumar Nigam");
   if (parts.length === 1) {
-    return <span className="text-xs text-slate-500 dark:text-slate-500 break-words">{authors}</span>;
+    return <span className="text-xs text-ink2 dark:text-ink2-dark break-words">{authors}</span>;
   }
   return (
-    <span className="text-xs text-slate-500 dark:text-slate-500 break-words">
+    <span className="text-xs text-ink2 dark:text-ink2-dark break-words">
       {parts.map((part, i) => (
         <span key={i} className="break-words">
           {part}
           {i < parts.length - 1 && (
-            <span className="font-bold text-blue-600 dark:text-blue-400 break-words">Shubham Kumar Nigam</span>
+            <span className="font-semibold text-accent dark:text-accent-link break-words">Shubham Kumar Nigam</span>
           )}
         </span>
       ))}
@@ -135,16 +52,28 @@ function getDisplayLinks(links: Publication["links"]) {
 
   for (const [key, url] of entries) {
     if (!url || url.trim() === "") continue;
-
-    // If proceedings URL equals anthology URL, skip proceedings (prefer ACL Anthology label)
-    if (key === "proceedings" && links.anthology && links.anthology === url) {
-      continue;
-    }
-
+    if (key === "proceedings" && links.anthology && links.anthology === url) continue;
     display.push([key, url]);
   }
 
   return display;
+}
+
+function StatusChip({ status }: { status: string }) {
+  const label = status === "published" ? "Published" : status === "accepted" ? "Accepted" : status === "submitted" ? "Submitted" : "Under Review";
+  const config: Record<string, { text: string; bg: string; border: string; dot: string }> = {
+    published: { text: "text-ok", bg: "bg-ok-bg", border: "border-ok-bd", dot: "bg-ok" },
+    accepted: { text: "text-signal-text", bg: "bg-[#F6ECDF] dark:bg-[#3D2615]", border: "border-transparent", dot: "bg-signal" },
+    submitted: { text: "text-accent dark:text-accent-link", bg: "bg-accent-tint", border: "border-accent-tintbd", dot: "bg-accent dark:bg-accent-link" },
+    "under-review": { text: "text-ink2", bg: "bg-paper dark:bg-paper-dark", border: "border-hairline dark:border-hairline-dark", dot: "bg-muted" },
+  };
+  const style = config[status] ?? config["under-review"];
+  return (
+    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium ${style.text} ${style.bg} ${style.border}`}>
+      <span className={`h-1.5 w-1.5 rounded-full ${style.dot}`} />
+      {label}
+    </span>
+  );
 }
 
 export default function PublicationCard({ pub, index }: PublicationCardProps) {
@@ -152,7 +81,7 @@ export default function PublicationCard({ pub, index }: PublicationCardProps) {
   const [copied, setCopied] = useState(false);
 
   const displayLinks = getDisplayLinks(pub.links);
-  const hasExpandableContent = !!(pub.abstract) || !!(pub.impact) || !!(pub.bibtexText);
+  const hasExpandableContent = !!(pub.abstract) || !!(pub.impact) || !!(pub.bibtexText) || displayLinks.length > 2;
 
   const copyBibtex = () => {
     if (pub.bibtexText) {
@@ -162,7 +91,15 @@ export default function PublicationCard({ pub, index }: PublicationCardProps) {
     }
   };
 
-  const linkButton = (key: keyof Publication["links"], url: string) => {
+  // Primary = arxiv if present, else first available. Secondary = next available.
+  const primaryIndex = displayLinks.findIndex(([k]) => k === "arxiv");
+  const ordered = primaryIndex > 0 ? [displayLinks[primaryIndex], ...displayLinks.filter((_, i) => i !== primaryIndex)] : displayLinks;
+  const inline = ordered.slice(0, 2);
+  const collapsed = ordered.slice(2);
+
+  const chipStyle = "inline-flex items-center gap-1.5 rounded-md border border-accent-tintbd dark:border-accent/30 bg-gradient-to-b from-accent-tint to-accent-tint/70 dark:from-accent/20 dark:to-accent/10 px-3 py-1.5 text-xs font-semibold text-accent dark:text-accent-link hover:from-accent-tint/80 hover:to-accent-tint/60 transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none";
+
+  const linkChip = (key: keyof Publication["links"], url: string) => {
     const cfg = linkConfig[key];
     if (!cfg) return null;
     const Icon = cfg.icon;
@@ -172,10 +109,10 @@ export default function PublicationCard({ pub, index }: PublicationCardProps) {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className={`inline-flex items-center gap-1 rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-colors ${cfg.color} ${cfg.darkColor} ${cfg.hover} ${cfg.darkHover}`}
+        className={chipStyle}
       >
         <Icon size={12} />
-        {linkLabels[key] || key}
+        {cfg.label}
       </a>
     );
   };
@@ -183,128 +120,115 @@ export default function PublicationCard({ pub, index }: PublicationCardProps) {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
-      className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm hover:shadow-lg transition-all"
+      transition={{ duration: 0.35 }}
+      className={`group relative overflow-hidden rounded-lg border bg-surface dark:bg-surface-dark shadow-sm hover:shadow-md transition-shadow ${pub.featured ? "border-l-2 border-signal" : "border-l-2 border-hairline dark:border-hairline-dark"}`}
     >
       {pub.featured && (
-        <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-900/30 px-2.5 py-1 text-xs font-medium text-amber-700 dark:text-amber-400">
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-md bg-signal/10 dark:bg-signal/20 px-2 py-0.5 text-xs font-medium text-signal">
           <Sparkles size={12} /> Featured
         </div>
       )}
 
-      {typeof index === "number" && (
-        <div className="absolute top-3 left-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white dark:bg-slate-800 border-2 border-blue-100 dark:border-blue-900/30 shadow-sm">
-          <span className="text-xs font-bold text-blue-600 dark:text-blue-400">{index}</span>
+      <div className="p-5 min-w-0">
+        <div className="flex flex-wrap items-center gap-2 mb-2">
+          {typeof index === "number" && (
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-hairline dark:border-hairline-dark bg-paper dark:bg-paper-dark text-xs font-heading text-accent dark:text-accent-link">
+              {index}
+            </span>
+          )}
+          <span className="inline-flex items-center rounded-md bg-paper dark:bg-paper-dark border border-hairline dark:border-hairline-dark px-2 py-0.5 text-xs font-medium text-ink2 dark:text-ink2-dark">
+            {pub.year}
+          </span>
+          <span className="inline-flex items-center rounded-md bg-paper dark:bg-paper-dark border border-hairline dark:border-hairline-dark px-2 py-0.5 text-xs font-medium text-ink2 dark:text-ink2-dark">
+            {pub.venue}
+          </span>
+          <StatusChip status={pub.status} />
         </div>
-      )}
 
-      <div className="flex flex-col md:flex-row">
-        <div className="md:w-48 h-40 md:h-auto shrink-0">
-          <PosterGraphic type={pub.posterType as any} title={pub.title} className="w-full h-full rounded-none md:rounded-l-2xl md:rounded-tr-none" />
+        <h3 className="text-base font-semibold text-ink dark:text-ink-dark leading-snug mb-1 font-heading break-words">
+          {pub.title}
+        </h3>
+        <p className="mb-3 break-words">
+          <HighlightedAuthors authors={pub.authors} />
+        </p>
+
+        <p className="text-sm text-ink2 dark:text-ink2-dark mb-3 line-clamp-2 break-words overflow-hidden">{pub.summary}</p>
+
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {pub.topic.map((t) => (
+            <span key={t} className="text-xs px-2 py-0.5 rounded-md bg-paper dark:bg-paper-dark text-ink2 dark:text-ink2-dark border border-hairline dark:border-hairline-dark">
+              {t}
+            </span>
+          ))}
         </div>
 
-        <div className="flex-1 p-5 min-w-0">
-          <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-900/20 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-400">
-              {pub.year}
-            </span>
-            <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-slate-600 dark:text-slate-400">
-              {pub.venue}
-            </span>
-            <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-              pub.status === "published"
-                ? "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400"
-                : pub.status === "accepted"
-                ? "bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400"
-                : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
-            }`}>
-              {pub.status === "published" ? "Published" : pub.status === "accepted" ? "Accepted" : pub.status === "submitted" ? "Submitted" : "Under Review"}
-            </span>
-          </div>
-
-          <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug mb-1 font-heading break-words">
-            {pub.title}
-          </h3>
-          <p className="mb-3 break-words">
-            <HighlightedAuthors authors={pub.authors} />
-          </p>
-
-          <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-2 break-words overflow-hidden">{pub.summary}</p>
-
-          <div className="flex flex-wrap gap-1.5 mb-3">
-            {pub.topic.map((t) => (
-              <span key={t} className="text-xs px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-700">
-                {t}
-              </span>
-            ))}
-          </div>
-
-          <AnimatePresence>
-            {expanded && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                className="overflow-hidden"
-              >
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 mb-3 space-y-3">
-                  {pub.abstract && (
-                    <div>
-                      <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wide">Abstract</p>
-                      <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap break-words">{pub.abstract}</p>
-                    </div>
-                  )}
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="overflow-hidden"
+            >
+              <div className="pt-3 border-t border-hairline dark:border-hairline-dark mb-3 space-y-3">
+                {pub.abstract && (
                   <div>
-                    <p className="text-sm text-slate-700 dark:text-slate-300 break-words">
-                      <span className="font-semibold">Impact:</span> {pub.impact}
-                    </p>
+                    <p className="text-xs font-semibold text-ink dark:text-ink-dark mb-1 uppercase tracking-wide">Abstract</p>
+                    <p className="text-sm text-ink2 dark:text-ink2-dark leading-relaxed whitespace-pre-wrap break-words">{pub.abstract}</p>
                   </div>
-                  {pub.bibtexText && (
-                    <div className="relative mt-3 min-w-0">
-                      <div className="flex items-center justify-between mb-1">
-                        <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wide">BibTeX</p>
-                        <button
-                          onClick={copyBibtex}
-                          className="inline-flex items-center gap-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-2 py-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        >
-                          {copied ? <Check size={12} /> : <Copy size={12} />}
-                          {copied ? "Copied" : "Copy BibTeX"}
-                        </button>
-                      </div>
-                      <pre className="text-xs bg-slate-50 dark:bg-slate-950 p-3 rounded-lg whitespace-pre-wrap break-words text-slate-700 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
-                        {pub.bibtexText}
-                      </pre>
-                    </div>
-                  )}
-                  {!pub.bibtexText && (
-                    <div className="mt-2">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-slate-500 dark:text-slate-400">
-                        BibTeX coming soon
-                      </span>
-                    </div>
-                  )}
+                )}
+                <div>
+                  <p className="text-sm text-ink2 dark:text-ink2-dark break-words">
+                    <span className="font-semibold text-ink dark:text-ink-dark">Impact:</span> {pub.impact}
+                  </p>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                {pub.bibtexText && (
+                  <div className="relative mt-3 min-w-0">
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-xs font-semibold text-ink dark:text-ink-dark uppercase tracking-wide">BibTeX</p>
+                      <button
+                        onClick={copyBibtex}
+                        className="inline-flex items-center gap-1 rounded-md bg-surface dark:bg-surface-dark border border-hairline dark:border-hairline-dark px-2 py-1 text-xs font-medium text-ink2 dark:text-ink2-dark hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+                      >
+                        {copied ? <Check size={12} /> : <Copy size={12} />}
+                        {copied ? "Copied" : "Copy BibTeX"}
+                      </button>
+                    </div>
+                    <pre className="text-xs bg-ink dark:bg-black p-3 rounded-lg whitespace-pre-wrap break-words text-paper dark:text-paper-dark font-mono border border-hairline dark:border-hairline-dark">
+                      {pub.bibtexText}
+                    </pre>
+                  </div>
+                )}
+                {!pub.bibtexText && (
+                  <div className="mt-2">
+                    <span className="inline-flex items-center gap-1 rounded-md bg-paper dark:bg-paper-dark border border-hairline dark:border-hairline-dark px-2.5 py-0.5 text-xs font-medium text-muted">
+                      BibTeX coming soon
+                    </span>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-          <div className="flex flex-wrap items-center gap-2">
-            {displayLinks.map(([key, url]) => linkButton(key, url))}
+        <div className="flex flex-wrap items-center gap-2">
+          {inline.map(([key, url]) => linkChip(key, url))}
 
-            {hasExpandableContent && (
-              <button
-                onClick={() => setExpanded(!expanded)}
-                className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                {expanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
-                {expanded ? "Less" : "More"}
-              </button>
-            )}
-          </div>
+          {collapsed.map(([key, url]) => linkChip(key, url))}
+
+          {hasExpandableContent && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-xs font-medium text-ink2 dark:text-ink2-dark hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+            >
+              {expanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+              {expanded ? "Less" : "Abstract & BibTeX"}
+            </button>
+          )}
         </div>
       </div>
     </motion.div>

@@ -22,28 +22,28 @@ export default function TeachingPage() {
             return (
               <motion.div
                 key={entry.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="rounded-lg border border-hairline dark:border-hairline-dark bg-surface dark:bg-surface-dark p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">
+                  <div className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-accent-tint border border-accent-tintbd text-accent dark:text-accent-link">
                     <Icon size={20} />
                   </div>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">{entry.course}</h3>
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                      <h3 className="text-base font-semibold text-ink dark:text-ink-dark">{entry.course}</h3>
+                      <span className="text-xs px-2 py-0.5 rounded-md bg-paper dark:bg-paper-dark border border-hairline dark:border-hairline-dark text-ink2 dark:text-ink2-dark">
                         {entry.role}
                       </span>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                    <p className="text-sm text-ink2 dark:text-ink2-dark mt-1">
                       {entry.institution} · {entry.period}
                     </p>
                     {entry.description && (
-                      <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">{entry.description}</p>
+                      <p className="text-sm text-muted mt-2">{entry.description}</p>
                     )}
                   </div>
                 </div>

@@ -3,122 +3,142 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { profile } from "@/data/profile";
-import { ArrowRight, Mail, Globe } from "lucide-react";
+import { profile, publications, datasetsModels, talks, achievements, projects } from "@/data/profile";
+import { ArrowRight, Globe } from "lucide-react";
 import { GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon } from "@/components/SocialIcons";
 
 export default function Hero() {
+  const stats = [
+    { value: publications.length, label: "Publications" },
+    { value: datasetsModels.length, label: "Datasets & Models" },
+    { value: talks.length, label: "Invited Talks" },
+    { value: achievements.length, label: "Awards & Honors" },
+    { value: projects.length, label: "Projects" },
+  ];
+
   return (
     <section className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-24">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl dark:bg-blue-600/10" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl dark:bg-cyan-600/10" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl dark:bg-amber-600/10" />
-      </div>
+      <div className="absolute inset-0 bg-paper dark:bg-paper-dark" />
+      <div
+        className="absolute inset-0 bg-[linear-gradient(#0000000a_1px,transparent_1px),linear-gradient(90deg,#0000000a_1px,transparent_1px)] bg-[size:64px_64px] dark:bg-[linear-gradient(#ffffff08_1px,transparent_1px),linear-gradient(90deg,#ffffff08_1px,transparent_1px)]"
+        aria-hidden="true"
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 dark:bg-blue-900/30 px-4 py-1.5 text-sm font-medium text-blue-700 dark:text-blue-300 mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
-              </span>
+            <div className="inline-flex items-center gap-2 rounded-md bg-accent-tint border border-accent-tintbd text-accent px-3 py-1.5 text-sm font-medium mb-6">
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
               Research Fellow @ University of Birmingham Dubai
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-slate-100 leading-tight font-heading">
+            <h1 className="font-heading font-normal text-5xl md:text-6xl text-ink dark:text-ink-dark leading-[1.04]">
               Advancing{" "}
-              <span className="gradient-text">Responsible, Scalable,</span> and{" "}
-              <span className="gradient-text">Interpretable AI</span> across Core ML, Law, and Healthcare
+              <span className="italic text-accent dark:text-accent-link">Responsible, Scalable,</span>{" "}
+              and Interpretable AI across Core ML, Law, and Healthcare
             </h1>
 
-            <p className="mt-6 text-lg text-slate-600 dark:text-slate-400 max-w-xl">
+            <p className="mt-6 text-lg text-ink2 dark:text-ink2-dark max-w-xl">
               Research Fellow at University of Birmingham Dubai | Core AI/ML | LLMs | Legal AI | Healthcare AI | Explainable AI | Multilingual AI
             </p>
 
-            <p className="mt-4 text-base text-slate-500 dark:text-slate-500 max-w-xl">
+            <p className="mt-4 text-base text-muted max-w-xl">
               Dr. Shubham Kumar Nigam is a researcher advancing AI memory management, distributed training, test-time training, efficient LLM systems, reasoning, agents, and evaluation—alongside specialized work in Legal AI and Healthcare AI. His work focuses on building transparent, factual, and responsible AI systems.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/publications/"
-                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20"
+                className="inline-flex items-center gap-2 text-sm font-medium text-ink2 dark:text-ink2-dark hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-2 py-1"
               >
                 View Publications <ArrowRight size={16} />
               </Link>
+              <span className="h-4 border-l border-hairline dark:border-hairline-dark" />
               <Link
                 href="/projects/"
-                className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-6 py-3 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-2 py-1"
               >
                 Explore Projects
-              </Link>
-              <Link
-                href="/contact/"
-                className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-6 py-3 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
-              >
-                <Mail size={16} /> Contact Me
               </Link>
             </div>
 
             <div className="mt-8 flex items-center gap-4">
-              <a href={profile.socials.website} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="Google Sites">
+              <a href={profile.socials.website} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="Google Sites">
                 <Globe size={22} />
               </a>
-              <a href={profile.socials.googleScholar} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" aria-label="Google Scholar">
+              <a href={profile.socials.googleScholar} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="Google Scholar">
                 <GoogleScholarIcon size={22} />
               </a>
-              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-black dark:hover:text-white transition-colors" aria-label="GitHub">
+              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="GitHub">
                 <GitHubIcon size={22} />
               </a>
-              <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-700 dark:hover:text-blue-400 transition-colors" aria-label="LinkedIn">
+              <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="LinkedIn">
                 <LinkedInIcon size={22} />
               </a>
-              <a href={profile.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-black dark:hover:text-white transition-colors" aria-label="X / Twitter">
+              <a href={profile.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="X / Twitter">
                 <XIcon size={22} />
               </a>
-              <a href={profile.socials.huggingfaceOrg} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors" aria-label="HuggingFace">
+              <a href={profile.socials.huggingfaceOrg} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded" aria-label="HuggingFace">
                 <HuggingFaceIcon size={22} />
               </a>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 12 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative flex justify-center"
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="relative flex flex-col items-center gap-6"
           >
-            <div className="relative">
-              <div className="absolute -inset-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-3xl opacity-25 blur-xl dark:opacity-15" />
-              <div className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-xl ring-1 ring-slate-900/5 dark:ring-white/10">
-                <Image
-                  src={profile.photo}
-                  alt={profile.name}
-                  fill
-                  className="object-cover"
-                  priority
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
-                    const parent = target.parentElement;
-                    if (parent) {
-                      parent.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-slate-800 dark:to-slate-700"><span class="text-5xl font-bold text-blue-600 dark:text-blue-400">${profile.initials}</span></div>`;
-                    }
-                  }}
-                />
-              </div>
+            <div className="relative w-64 md:w-72 lg:w-80 aspect-[4/5] rounded-xl overflow-hidden border border-hairline bg-surface dark:bg-surface-dark shadow-sm">
+              <Image
+                src={profile.photo}
+                alt={profile.name}
+                fill
+                className="object-cover"
+                priority
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = "none";
+                  const parent = target.parentElement;
+                  if (parent) {
+                    parent.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-hairline dark:bg-hairline-dark"><span class="text-5xl font-heading text-ink dark:text-ink-dark">${profile.initials}</span></div>`;
+                  }
+                }}
+              />
+            </div>
 
-              <div className="absolute -top-3 -right-3 w-20 h-20 border-t-2 border-r-2 border-blue-300/40 dark:border-blue-600/20 rounded-tr-2xl" />
-              <div className="absolute -bottom-3 -left-3 w-20 h-20 border-b-2 border-l-2 border-cyan-300/40 dark:border-cyan-600/20 rounded-bl-2xl" />
+            <div className="w-64 md:w-72 lg:w-80 rounded-lg border border-hairline bg-surface dark:bg-surface-dark p-4 shadow-sm">
+              <p className="text-xs font-medium uppercase tracking-wide text-muted mb-2">Recent honours</p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-ink2 dark:text-ink2-dark">
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-signal shrink-0" />
+                  <span>Best Paper Award – Bridge between AI and Law @ AAAI 2026</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-ink2 dark:text-ink2-dark">
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-signal shrink-0" />
+                  <span>DAAD Postdoc-NeT-AI Fellow</span>
+                </li>
+              </ul>
             </div>
           </motion.div>
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10">
+          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 text-ink2 border-t border-hairline dark:border-hairline-dark pt-6">
+            {stats.map((s) => (
+              <span key={s.label} className="flex items-baseline gap-1.5">
+                <span className="font-heading text-lg text-ink dark:text-ink-dark">{s.value}</span>
+                <span className="text-sm">{s.label}</span>
+              </span>
+            ))}
+            <span className="self-center h-3 border-l border-hairline dark:border-hairline-dark" />
+            <span className="text-sm text-muted dark:text-muted-dark">ACL · NAACL · EMNLP · COLING · ICAIL</span>
+          </div>
         </div>
       </div>
     </section>

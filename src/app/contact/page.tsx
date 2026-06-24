@@ -15,44 +15,44 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -12 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-1 space-y-6"
           >
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow-sm">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4">Contact Information</h3>
+            <div className="rounded-lg border border-hairline dark:border-hairline-dark bg-surface dark:bg-surface-dark p-6 shadow-sm">
+              <h3 className="font-heading text-lg text-ink dark:text-ink-dark mb-4">Contact Information</h3>
               <div className="space-y-4">
-                <a href={`mailto:${profile.email}`} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  <Mail size={18} className="text-blue-500" /> {profile.email}
+                <a href={`mailto:${profile.email}`} className="flex items-center gap-3 text-sm text-ink2 dark:text-ink2-dark hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded">
+                  <Mail size={18} className="text-accent dark:text-accent-link" /> {profile.email}
                 </a>
-                <a href={`mailto:${profile.emailAlt}`} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  <Mail size={18} className="text-blue-500" /> {profile.emailAlt}
+                <a href={`mailto:${profile.emailAlt}`} className="flex items-center gap-3 text-sm text-ink2 dark:text-ink2-dark hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded">
+                  <Mail size={18} className="text-accent dark:text-accent-link" /> {profile.emailAlt}
                 </a>
-                <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
-                  <MapPin size={18} className="text-blue-500" /> {profile.location}
+                <div className="flex items-center gap-3 text-sm text-ink2 dark:text-ink2-dark">
+                  <MapPin size={18} className="text-accent dark:text-accent-link" /> {profile.location}
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-br from-blue-50/80 via-white to-cyan-50/80 dark:from-blue-900/20 dark:via-slate-900 dark:to-cyan-900/20 p-6 shadow-sm backdrop-blur-sm">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4">Social & Academic</h3>
-              <div className="space-y-2">
+            <div className="rounded-lg border border-hairline dark:border-hairline-dark bg-surface dark:bg-surface-dark p-6 shadow-sm">
+              <h3 className="font-heading text-lg text-ink dark:text-ink-dark mb-4">Social & Academic</h3>
+              <div className="space-y-1">
                 {[
-                  { href: profile.socials.website, icon: Globe, label: "Google Sites", color: "hover:text-blue-600 dark:hover:text-blue-400" },
-                  { href: profile.socials.googleScholar, icon: GoogleScholarIcon, label: "Google Scholar", color: "hover:text-emerald-600 dark:hover:text-emerald-400" },
-                  { href: profile.socials.github, icon: GitHubIcon, label: "GitHub", color: "hover:text-black dark:hover:text-white" },
-                  { href: profile.socials.linkedin, icon: LinkedInIcon, label: "LinkedIn", color: "hover:text-blue-700 dark:hover:text-blue-400" },
-                  { href: profile.socials.twitter, icon: XIcon, label: "X / Twitter", color: "hover:text-black dark:hover:text-white" },
-                  { href: profile.socials.huggingfaceOrg, icon: HuggingFaceIcon, label: "HuggingFace", color: "hover:text-yellow-600 dark:hover:text-yellow-400" },
-                  { href: profile.socials.university, icon: ExternalLink, label: "University Profile", color: "hover:text-violet-600 dark:hover:text-violet-400" },
+                  { href: profile.socials.website, icon: Globe, label: "Google Sites" },
+                  { href: profile.socials.googleScholar, icon: GoogleScholarIcon, label: "Google Scholar" },
+                  { href: profile.socials.github, icon: GitHubIcon, label: "GitHub" },
+                  { href: profile.socials.linkedin, icon: LinkedInIcon, label: "LinkedIn" },
+                  { href: profile.socials.twitter, icon: XIcon, label: "X / Twitter" },
+                  { href: profile.socials.huggingfaceOrg, icon: HuggingFaceIcon, label: "HuggingFace" },
+                  { href: profile.socials.university, icon: ExternalLink, label: "University Profile" },
                 ].map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-600 dark:text-slate-400 ${item.color} hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all`}
+                    className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-ink2 dark:text-ink2-dark hover:text-accent dark:hover:text-accent-link hover:bg-paper dark:hover:bg-paper-dark transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
                   >
                     <item.icon size={20} /> {item.label}
                   </a>
@@ -60,22 +60,22 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Collaboration CTA</h3>
-              <p className="text-sm text-slate-700 dark:text-slate-300">
+            <div className="rounded-lg border border-hairline dark:border-hairline-dark bg-accent-tint border-accent-tintbd p-6">
+              <h3 className="font-heading text-lg text-accent dark:text-accent-link mb-2">Collaboration CTA</h3>
+              <p className="text-sm text-ink2 dark:text-ink2-dark">
                 I am actively looking for research collaborators, PhD students, and industry partners in Legal AI and Healthcare AI. If you share similar interests, let us connect!
               </p>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 12 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 md:p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Send a Message</h3>
+            <div className="rounded-lg border border-hairline dark:border-hairline-dark bg-surface dark:bg-surface-dark p-6 md:p-8 shadow-sm">
+              <h3 className="font-heading text-xl text-ink dark:text-ink-dark mb-6">Send a Message</h3>
               <ContactForm />
             </div>
           </motion.div>
