@@ -196,10 +196,38 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="relative pl-8 pb-8 last:pb-0 border-l-2 border-hairline dark:border-hairline-dark"
+                className="relative flex gap-4 pb-8 last:pb-0"
               >
-                <div className={`absolute -left-[7px] top-0 h-3.5 w-3.5 rounded-full border-2 border-paper dark:border-paper-dark ${i === 0 ? "bg-accent" : "bg-muted"}`} />
-                <div>
+                <div className="relative shrink-0 w-16 flex flex-col items-center">
+                  <div className="w-16 h-16 flex items-center justify-center">
+                    {exp.logo ? (
+                      <a
+                        href={exp.organizationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded"
+                        aria-label={exp.organization}
+                      >
+                        <Image
+                          src={exp.logo}
+                          alt={exp.organization}
+                          width={64}
+                          height={64}
+                          className="w-16 h-16 object-contain"
+                          onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                        />
+                      </a>
+                    ) : (
+                      <div className="w-16 h-16 rounded-full bg-surface dark:bg-surface-dark border border-hairline dark:border-hairline-dark flex items-center justify-center text-xs font-heading text-ink2 dark:text-ink2-dark">
+                        {exp.organization.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+                  {i < experiences.length - 1 && (
+                    <div className="absolute top-16 bottom-[-2rem] left-1/2 w-px -translate-x-1/2 bg-hairline dark:bg-hairline-dark" />
+                  )}
+                </div>
+                <div className="flex-1 min-w-0 pt-0.5">
                   <p className="font-semibold text-ink dark:text-ink-dark">{exp.role}</p>
                   <p className="text-xs font-mono text-accent dark:text-accent-link mt-0.5">
                     {exp.startDate} – {exp.endDate}
@@ -235,10 +263,38 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="relative pl-8 pb-8 last:pb-0 border-l-2 border-hairline dark:border-hairline-dark"
+                className="relative flex gap-4 pb-8 last:pb-0"
               >
-                <div className={`absolute -left-[7px] top-0 h-3.5 w-3.5 rounded-full border-2 border-paper dark:border-paper-dark ${edu.degree.toLowerCase().includes("ph.d") ? "bg-signal" : "bg-muted"}`} />
-                <div>
+                <div className="relative shrink-0 w-16 flex flex-col items-center">
+                  <div className="w-16 h-16 flex items-center justify-center">
+                    {edu.logo ? (
+                      <a
+                        href={edu.institutionUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded"
+                        aria-label={edu.institution}
+                      >
+                        <Image
+                          src={edu.logo}
+                          alt={edu.institution}
+                          width={64}
+                          height={64}
+                          className="w-16 h-16 object-contain"
+                          onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                        />
+                      </a>
+                    ) : (
+                      <div className="w-16 h-16 rounded-full bg-surface dark:bg-surface-dark border border-hairline dark:border-hairline-dark flex items-center justify-center text-xs font-heading text-ink2 dark:text-ink2-dark">
+                        {edu.institution.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+                  {i < education.length - 1 && (
+                    <div className="absolute top-16 bottom-[-2rem] left-1/2 w-px -translate-x-1/2 bg-hairline dark:bg-hairline-dark" />
+                  )}
+                </div>
+                <div className="flex-1 min-w-0 pt-0.5">
                   <p className="font-semibold text-ink dark:text-ink-dark">{edu.degree}</p>
                   <p className="text-xs font-mono text-accent dark:text-accent-link mt-0.5">{edu.period}</p>
                   <p className="text-sm text-ink2 dark:text-ink2-dark mt-1">

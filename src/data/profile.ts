@@ -94,11 +94,25 @@ export interface Experience {
   role: string;
   organization: string;
   organizationUrl?: string;
+  logo?: string;
   location: string;
   startDate: string;
   endDate: string;
   current: boolean;
   description: string[];
+}
+
+export interface Education {
+  degree: string;
+  institution: string;
+  institutionUrl?: string;
+  departmentUrl?: string;
+  logo?: string;
+  location: string;
+  period: string;
+  thesis?: string;
+  supervisor?: string;
+  supervisorUrl?: string;
 }
 
 export interface WorkingProject {
@@ -181,6 +195,7 @@ export const experiences: Experience[] = [
     role: "Research Fellow",
     organization: "University of Birmingham Dubai",
     organizationUrl: "https://www.birmingham.ac.uk/dubai",
+    logo: "/logos/university-of-birmingham.png",
     location: "Dubai, UAE",
     startDate: "Aug 2025",
     endDate: "Present",
@@ -194,6 +209,7 @@ export const experiences: Experience[] = [
     role: "Senior Student Research Associate",
     organization: "BharatGen, IIT Kanpur",
     organizationUrl: "https://bharatgen.com/",
+    logo: "/logos/bharatgen.svg",
     location: "Kanpur, India",
     startDate: "May 2025",
     endDate: "July 2025",
@@ -208,6 +224,7 @@ export const experiences: Experience[] = [
     role: "Research Internship",
     organization: "Adobe",
     organizationUrl: "https://www.adobe.com/",
+    logo: "/logos/adobe.png",
     location: "Bangalore, India",
     startDate: "May 2023",
     endDate: "Aug 2023",
@@ -222,6 +239,7 @@ export const experiences: Experience[] = [
     role: "Project Assistant-1",
     organization: "Aeronautical Development Agency (ADA)",
     organizationUrl: "https://www.ada.gov.in/",
+    logo: "/logos/aeronautical-development-agency.png",
     location: "Bangalore, India",
     startDate: "Sep 2017",
     endDate: "Dec 2017",
@@ -233,12 +251,13 @@ export const experiences: Experience[] = [
   },
 ];
 
-export const education = [
+export const education: Education[] = [
   {
     degree: "Ph.D. in Computer Science and Engineering",
     institution: "Indian Institute of Technology Kanpur",
     institutionUrl: "https://www.iitk.ac.in/",
     departmentUrl: "https://www.cse.iitk.ac.in/",
+    logo: "/logos/iit-kanpur.svg",
     location: "Kanpur, Uttar Pradesh, India",
     period: "2017 – 2025",
     thesis: "AI in Law: Comprehending the Indian Legal System using Artificial Intelligence",
@@ -249,6 +268,7 @@ export const education = [
     degree: "M.Tech. in Computer Science and Engineering",
     institution: "Indian Institute of Engineering Science and Technology",
     institutionUrl: "https://www.iiests.ac.in/",
+    logo: "/logos/iiest-shibpur.webp",
     location: "Howrah, West Bengal, India",
     period: "2015 – 2017",
     thesis: "Solving the Heavy Hitters Problem for Streaming Data",
@@ -259,6 +279,7 @@ export const education = [
     degree: "B.E. in Information Technology",
     institution: "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
     institutionUrl: "https://www.rgpv.ac.in/",
+    logo: "/logos/rgpv.jpeg",
     location: "Bhopal, Madhya Pradesh, India",
     period: "2008 – 2012",
   },
