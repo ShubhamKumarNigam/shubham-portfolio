@@ -5,7 +5,7 @@ import { profile } from "@/data/profile";
 import { ExternalLink, Globe } from "lucide-react";
 import {
   GoogleScholarIcon, GitHubIcon, LinkedInIcon, XIcon, HuggingFaceIcon,
-  DBLPIcon, ORCIDIcon, SemanticScholarIcon, ACLAnthologyIcon, ScopusIcon, ResearchGateIcon,
+  DBLPIcon, ORCIDIcon, SemanticScholarIcon, ACLAnthologyIcon, ScopusIcon, ResearchGateIcon, ArXivIcon,
 } from "@/components/SocialIcons";
 import { BrandMark } from "@/components/BrandMark";
 
@@ -45,6 +45,7 @@ export default function Footer() {
                 { href: profile.socials.aclAnthology, icon: ACLAnthologyIcon, label: "ACL Anthology" },
                 { href: profile.socials.scopus, icon: ScopusIcon, label: "Scopus" },
                 { href: profile.socials.researchGate, icon: ResearchGateIcon, label: "ResearchGate" },
+                { href: profile.socials.arxiv, icon: ArXivIcon, label: "arXiv" },
                 { href: profile.socials.github, icon: GitHubIcon, label: "GitHub" },
                 { href: profile.socials.linkedin, icon: LinkedInIcon, label: "LinkedIn" },
                 { href: profile.socials.twitter, icon: XIcon, label: "X / Twitter" },
@@ -59,7 +60,7 @@ export default function Footer() {
                   className="text-muted hover:text-accent dark:hover:text-accent-link transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded"
                   aria-label={item.label}
                 >
-                  <item.icon size={20} />
+                  <item.icon size={24} />
                 </a>
               ))}
             </div>

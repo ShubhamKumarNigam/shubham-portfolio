@@ -161,6 +161,7 @@ export const profile = {
     aclAnthology: "https://aclanthology.org/people/s/shubham-kumar-nigam/",
     scopus: "https://www.scopus.com/authid/detail.uri?authorId=57214220082",
     researchGate: "https://www.researchgate.net/profile/Shubham-Kumar-Nigam",
+    arxiv: "https://arxiv.org/a/nigam_s_1.html",
     linkedin: "https://www.linkedin.com/in/dr-shubham-kumar-nigam-34670541",
     github: "https://github.com/ShubhamKumarNigam",
     huggingfaceOrg: "https://huggingface.co/L-NLProc",
