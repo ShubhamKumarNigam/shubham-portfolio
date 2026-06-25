@@ -40,7 +40,7 @@ export function SemanticScholarIcon({ size = 24, className = "" }: IconProps) {
 }
 
 export function ACLAnthologyIcon({ size = 24, className = "" }: IconProps) {
-  return <i className={`ai ai-acl ${className}`} style={{ fontSize: size }} aria-hidden="true" />;
+  return <i className={`fas fa-book-open ${className}`} style={{ fontSize: size }} aria-hidden="true" />;
 }
 
 export function ScopusIcon({ size = 24, className = "" }: IconProps) {
