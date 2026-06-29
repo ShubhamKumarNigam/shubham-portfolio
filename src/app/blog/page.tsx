@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { getPublishedPosts } from "@/data/blog";
 import SectionTitle from "@/components/SectionTitle";
@@ -23,22 +22,8 @@ export default function BlogPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group rounded-lg border border-hairline dark:border-hairline-dark bg-surface dark:bg-surface-dark overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className="group rounded-lg border border-hairline dark:border-hairline-dark bg-surface dark:bg-surface-dark p-6 shadow-sm hover:shadow-md transition-shadow"
             >
-              {post.coverImage && (
-                <Link href={`/blog/${post.slug}/`} className="block focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
-                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-paper dark:bg-paper-dark">
-                    <Image
-                      src={post.coverImage}
-                      alt={post.coverImageAlt || post.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                    />
-                  </div>
-                </Link>
-              )}
-              <div className="p-6">
               <div className="flex flex-wrap items-center gap-3 text-xs text-muted dark:text-muted-dark mb-3">
                 <span className="inline-flex items-center gap-1.5">
                   <Calendar size={13} />
@@ -83,7 +68,6 @@ export default function BlogPage() {
                 >
                   Read article <ArrowRight size={15} />
                 </Link>
-              </div>
               </div>
             </motion.article>
           ))}

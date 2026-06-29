@@ -57,12 +57,13 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </h1>
 
           {post.coverImage && (
-            <div className="mt-6 relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-hairline dark:border-hairline-dark bg-paper dark:bg-paper-dark">
+            <div className="mt-6">
               <Image
                 src={post.coverImage}
                 alt={post.coverImageAlt || post.title}
-                fill
-                className="object-cover"
+                width={1200}
+                height={800}
+                className="w-full h-auto rounded-lg border border-hairline dark:border-hairline-dark"
                 priority
               />
             </div>
