@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu, X, ChevronDown,
-  Home, User, FlaskConical, BookOpen, Database, FolderOpen, GraduationCap,
+  Home, User, FlaskConical, BookOpen, Database, FolderOpen, GraduationCap, Newspaper,
   Mic, Award, BookOpenCheck, Layers, Wrench, FolderGit2
 } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
@@ -57,6 +57,7 @@ const navItems: NavItem[] = [
       { label: "Teaching", href: "/teaching/", icon: BookOpenCheck },
     ],
   },
+  { label: "Blog", href: "/blog/", icon: Newspaper },
 ];
 
 export default function Navbar() {
