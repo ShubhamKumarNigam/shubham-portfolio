@@ -6,6 +6,8 @@ export interface BlogPost {
   tags: string[];
   readingTime: string;
   published: boolean;
+  coverImage?: string;
+  coverImageAlt?: string;
   content: string;
 }
 
@@ -19,6 +21,8 @@ export const blogPosts: BlogPost[] = [
     tags: ["DNA Storage", "Archival Memory", "AI Infrastructure", "Future of Computing"],
     readingTime: "12 min read",
     published: true,
+    coverImage: "/blog/dna-based-digital-data-storage.webp",
+    coverImageAlt: "DNA double helix representing digital data storage",
     content: `
 <h2>Introduction</h2>
 <p>Humanity is producing more digital data than existing storage systems were designed to preserve. Scientific datasets, legal records, medical histories, satellite imagery, cultural archives, AI training corpora, model checkpoints, and enterprise logs are growing at a scale where conventional storage media—hard disks, SSDs, and magnetic tape—face limits in density, energy use, durability, and long-term maintenance. IDC projected the global datasphere to reach <strong>175 zettabytes by 2025</strong>, showing the magnitude of the storage challenge. (<a href="https://www.seagate.com/files/www-content/our-story/trends/files/dataage-idc-report-final.pdf" target="_blank" rel="noopener noreferrer">Seagate</a>)</p>

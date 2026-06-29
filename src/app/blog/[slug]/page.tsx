@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getPublishedPosts, getPostBySlug } from "@/data/blog";
 import { Calendar, Clock, ArrowLeft, Tag } from "lucide-react";
@@ -54,6 +55,18 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <h1 className="font-heading text-3xl md:text-4xl text-ink dark:text-ink-dark leading-tight">
             {post.title}
           </h1>
+
+          {post.coverImage && (
+            <div className="mt-6 relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-hairline dark:border-hairline-dark bg-paper dark:bg-paper-dark">
+              <Image
+                src={post.coverImage}
+                alt={post.coverImageAlt || post.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
             {post.tags.map((tag) => (
