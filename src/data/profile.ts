@@ -290,24 +290,38 @@ export const publications: Publication[] = [
     id: "pub-1",
     title: "IndicMedDialog: A Parallel Multi-Turn Medical Dialogue Dataset for Accessible Healthcare in Indic Languages",
     authors: "Shubham Kumar Nigam, Suparnojit Sarkar, and Piyush Patel",
-    venue: "BioNLP @ ACL",
+    venue: "BioNLP 2026",
     year: 2026,
-    status: "accepted",
+    status: "published",
     type: "workshop",
     topic: ["Healthcare AI", "Multilingual AI", "NLP"],
     summary: "Introduces a parallel multi-turn medical dialogue dataset for accessible healthcare in Indic languages, enabling multilingual medical dialogue systems.",
-    abstract: "Most existing medical dialogue systems operate in a single-turn question--answering paradigm or rely on template-based datasets, limiting conversational realism and multilingual applicability. We introduce IndicMedDialog, a parallel multi-turn medical dialogue dataset spanning English and nine Indic languages: Assamese, Bengali, Gujarati, Hindi, Marathi, Punjabi, Tamil, Telugu, and Urdu. The dataset extends MDDial with LLM-generated synthetic consultations, translated using TranslateGemma, verified by native speakers, and refined through a script-aware post-processing pipeline to correct phonetic, lexical, and character-spacing errors. Building on this dataset, we fine-tune IndicMedLM via parameter-efficient adaptation of a quantized small language model, incorporating optional patient pre-context to personalise multi-turn symptom elicitation. We evaluate against zero-shot multilingual baselines, conduct systematic error analysis across ten languages, and validate clinical plausibility through medical expert evaluation.",
+    abstract: "We present IndicMedDialog, a parallel multi-turn medical dialogue dataset spanning English and nine Indic languages (Assamese, Bengali, Gujarati, Hindi, Marathi, Punjabi, Tamil, Telugu, and Urdu). The dataset extends the MDDial corpus with LLM-generated synthetic consultations, translated using TranslateGemma, verified by native speakers, and refined through a script-aware post-processing pipeline to correct phonetic, lexical, and character-spacing errors introduced during automatic translation. Building on this dataset, we fine-tune IndicMedLM via parameter-efficient adaptation (LoRA) of a quantized small language model, incorporating an optional patient pre-context to personalise multi-turn symptom elicitation. We evaluate IndicMedLM against zero-shot multilingual baselines across ten languages and conduct systematic error analysis, identifying five failure modes: Instruction Drift, Label Collapse, Cross-Domain Confusion, Tokenization Failure, and Paraphrase-over-Label Generation. Results show strong post-processed diagnostic accuracy in Hindi, Marathi, and Bengali, while Assamese, Tamil, and Telugu remain in an extreme failure tier attributable to base-model tokenizer gaps, a finding with direct patient safety implications. Medical expert evaluation confirms the clinical plausibility and safety of the generated consultations.",
     impact: "Advances healthcare accessibility by providing Indic language medical dialogue data for AI research.",
     posterType: "healthcare-dialogue",
     links: {
+      proceedings: "https://aclanthology.org/2026.bionlp-1.84/",
       arxiv: "https://arxiv.org/abs/2605.13292",
       github: "https://github.com/ShubhamKumarNigam/IndicMedDialog",
     },
-    bibtexText: `@article{nigam2026indicmeddialog,
-  title={IndicMedDialog: A Parallel Multi-Turn Medical Dialogue Dataset for Accessible Healthcare in Indic Languages},
-  author={Nigam, Shubham Kumar and Sarkar, Suparnojit and Patel, Piyush},
-  journal={arXiv preprint arXiv:2605.13292},
-  year={2026}
+    bibtexText: `@inproceedings{nigam-etal-2026-indicmeddialog,
+    title = "{I}ndic{M}ed{D}ialog: A Parallel Multi-Turn Medical Dialogue Dataset for Accessible Healthcare in {I}ndic Languages",
+    author = "Nigam, Shubham  and
+      Sarkar, Suparnojit  and
+      Patel, Piyush",
+    editor = "Demner-Fushman, Dina  and
+      Ananiadou, Sophia  and
+      Roberts, Kirk  and
+      Tsujii, Junichi",
+    booktitle = "{B}io{NLP} 2026",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.bionlp-1.84/",
+    pages = "1041--1055",
+    ISBN = "979-8-89176-434-7",
+    abstract = "We present IndicMedDialog, a parallel multi-turn medical dialogue dataset spanning English and nine Indic languages (Assamese, Bengali, Gujarati, Hindi, Marathi, Punjabi, Tamil, Telugu, and Urdu). The dataset extends the MDDial corpus with LLM-generated synthetic consultations, translated using TranslateGemma, verified by native speakers, and refined through a script-aware post-processing pipeline to correct phonetic, lexical, and character-spacing errors introduced during automatic translation. Building on this dataset, we fine-tune IndicMedLM via parameter-efficient adaptation (LoRA) of a quantized small language model, incorporating an optional patient pre-context to personalise multi-turn symptom elicitation. We evaluate IndicMedLM against zero-shot multilingual baselines across ten languages and conduct systematic error analysis, identifying five failure modes: Instruction Drift, Label Collapse, Cross-Domain Confusion, Tokenization Failure, and Paraphrase-over-Label Generation. Results show strong post-processed diagnostic accuracy in Hindi, Marathi, and Bengali, while Assamese, Tamil, and Telugu remain in an extreme failure tier attributable to base-model tokenizer gaps, a finding with direct patient safety implications. Medical expert evaluation confirms the clinical plausibility and safety of the generated consultations."
 }`,
     featured: true,
   },
